@@ -39,20 +39,6 @@ pipeline {
                 sh 'docker build -t devsecops-app .'
             }
         }
-stage('Trivy Image Scan') {
-    steps {
-        sh 'trivy image devsecops-app'
-    }
-}
-
-stage('Deploy Container') {
-    steps {
-        sh '''
-        docker rm -f devsecops-running || true
-        docker run -d -p 8085:8080 --name devsecops-running devsecops-app
-        '''
-    }
-}
 }
 
 }
