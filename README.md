@@ -5,3 +5,4 @@ This project demonstrates an automated CI/CD pipeline using Jenkins, Docker, and
 - CI/CD with Jenkins
 - Security Analysis with SonarQube & Trivy
 - Containerization with Docker
+- this is real security scan
