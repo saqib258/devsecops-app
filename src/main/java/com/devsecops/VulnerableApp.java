@@ -35,17 +35,15 @@ public class VulnerableApp {
             // Path traversal vulnerability for testing scanners
             if(query != null && query.startsWith("file=")) {
 
-    String filename = query.substring(5);
+                String filename = query.substring(5);
 
-    Path baseDir = Paths.get("safe-files").toAbsolutePath().normalize();
-    Path requested = baseDir.resolve(filename).normalize();
+                // UNSAFE — directly reading user input path
+                response = new String(
+                        Files.readAllBytes(
+                                Paths.get(filename)
+                        )
+                );
 
-    if(!requested.startsWith(baseDir)) {
-        response = "Access denied";
-    } else {
-        response = new String(Files.readAllBytes(requested));
-    }
-}
 
             }
 
